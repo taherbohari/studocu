@@ -26,6 +26,14 @@ resource "aws_subnet" "studocu-private-subnet" {
   }
 }
 
+## this will be required during asg creation
+locals {
+  pri-subnet-ids = [
+    for i in range(0, length(data.aws_availability_zones.available.names)) : aws_subnet.studocu-private-subnet[i].id
+  ]
+
+}
+
 ## Nat Gateway
 resource "aws_eip" "studocu-nat-eip" {
 
