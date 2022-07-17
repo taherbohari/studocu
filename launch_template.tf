@@ -16,14 +16,6 @@ resource "aws_launch_template" "studocu-lc" {
 
   name = "studocu-lc"
 
-  block_device_mappings {
-
-    device_name = "/dev/sda1"
-    ebs {
-      volume_size = 8
-    }
-  }
-
   image_id      = data.aws_ami.amazon-2.id
   instance_type = "t2.micro"
   key_name      = "demo-1"

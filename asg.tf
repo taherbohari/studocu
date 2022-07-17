@@ -25,4 +25,7 @@ resource "aws_autoscaling_group" "studocu-asg" {
     triggers = ["tag"]
   }
 
+  target_group_arns = [aws_lb_target_group.studocu-alb-tg.arn]
+
+  depends_on = [aws_nat_gateway.studocu-natgw]
 }
