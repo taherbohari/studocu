@@ -5,10 +5,10 @@
 resource "aws_autoscaling_group" "studocu-asg" {
 
   name                = "studocu-asg"
-  vpc_zone_identifier = local.pri-subnet-ids
-  desired_capacity    = 2
-  min_size            = 2
-  max_size            = 5
+  vpc_zone_identifier = [for subnet in aws_subnet.studocu-private-subnet : subnet.id]
+  desired_capacity    = var.asg_desired_capacity
+  min_size            = var.asg_min_size
+  max_size            = var.asg_max_size
 
   launch_template {
     id      = aws_launch_template.studocu-lc.id

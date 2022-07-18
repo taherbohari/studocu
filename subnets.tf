@@ -6,7 +6,7 @@ resource "aws_subnet" "studocu-public-subnet" {
 
   count                   = length(data.aws_availability_zones.available.names)
   vpc_id                  = aws_vpc.studocu-vpc.id
-  cidr_block              = "10.200.${0 + count.index}.0/24"
+  cidr_block              = "${lookup(var.cidr_ab, var.env)}.${0 + count.index}.0/24"
   availability_zone       = data.aws_availability_zones.available.names[count.index]
   map_public_ip_on_launch = true
   tags = {
@@ -18,7 +18,7 @@ resource "aws_subnet" "studocu-private-subnet" {
 
   count                   = length(data.aws_availability_zones.available.names)
   vpc_id                  = aws_vpc.studocu-vpc.id
-  cidr_block              = "10.200.${10 + count.index}.0/24"
+  cidr_block              = "${lookup(var.cidr_ab, var.env)}.${10 + count.index}.0/24"
   availability_zone       = data.aws_availability_zones.available.names[count.index]
   map_public_ip_on_launch = false
   tags = {

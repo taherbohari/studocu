@@ -13,11 +13,11 @@ resource "aws_lb_target_group" "studocu-alb-tg" {
 
   health_check {
 
-    healthy_threshold   = 2
-    interval            = 10
+    healthy_threshold   = var.healthy_threshold
+    interval            = var.health_check_interval
     matcher             = 200
     path                = "/"
-    unhealthy_threshold = 5
+    unhealthy_threshold = var.unhealthy_threshold
     port                = 80
   }
 }
