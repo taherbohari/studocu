@@ -52,3 +52,6 @@ Welcome to StuDocu
 ```
 terraform destroy
 ```
+
+- Your setup will be something like this :
+![image](https://user-images.githubusercontent.com/6408186/179826610-fe68c581-59d2-4950-a8c4-f90bf18e271a.png)
