@@ -41,3 +41,14 @@ terraform plan -out my_plan
 ```
 terraform apply "my_plan"
 ```
+
+- After all the changes are applied, you will see the name of Load Balancer as output.
+- Open the load balancer url in your browser. You will see a msg like
+```
+Welcome to StuDocu
+```
+
+- To destroy the cluster
+```
+terraform destroy
+```
